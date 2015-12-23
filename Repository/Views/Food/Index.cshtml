@@ -1,0 +1,15 @@
+﻿@{
+    ViewBag.Title = "Index";
+}
+
+<h2>FOOD INGREDIENTS</h2> <br /> <br />
+
+@if (TempData["ingredientList"] != null)
+{
+    <h3 class="jumbotron">@TempData["ingredientList"]</h3>
+}
+
+@if(TempData["cost"] != null)
+{
+    <p class="label label-danger"> Cost : @TempData["cost"]</p>
+}

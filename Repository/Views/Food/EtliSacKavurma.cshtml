@@ -1,0 +1,100 @@
+﻿@model Repository.Models.IngredientsViewModel
+@{
+    ViewBag.Title = "Ciger";
+}
+<form method="post" action="" id="form1" enctype="multipart/form-data">
+
+    @Html.AntiForgeryToken()
+
+    <h2>Etli Sac Kavurma</h2>
+    <div>
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Biber.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Biber, new { htmlAttributes = new { @class = "form-control" } })  <p>KG</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Biber, "", new { @class = "text-danger" })
+            </div>
+        </div>
+        <br />
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Domates.jpg" /><br />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Domates, new { htmlAttributes = new { @class = "form-control" } })  <p>KG</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Domates, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Et.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Et, new { htmlAttributes = new { @class = "form-control" } })  <p>KG</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Et, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Patlican.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Patlican, new { htmlAttributes = new { @class = "form-control" } })  <p>KG</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Patlican, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Salca.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Salca, new { htmlAttributes = new { @class = "form-control" } })  <p>KG</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Salca, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Siviyag.png" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Siviyag, new { htmlAttributes = new { @class = "form-control" } })  <p>LT</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Siviyag, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Su.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Su, new { htmlAttributes = new { @class = "form-control" } })  <p>LT</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Su, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10">
+                <br /><br />
+                <img src="~/Content/Images/Zeytinyagi.jpg" />
+                <div class="leftTextbox">
+                    @Html.EditorFor(model => model.Zeytinyagi, new { htmlAttributes = new { @class = "form-control" } })  <p>LT</p>
+                </div>
+                @Html.ValidationMessageFor(model => model.Zeytinyagi, "", new { @class = "text-danger" })
+            </div>
+        </div>
+    </div>
+    <input type="submit" value="Bitir" class="btn btn-success" />
+</form>
