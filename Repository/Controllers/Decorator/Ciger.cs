@@ -12,7 +12,7 @@ namespace Repository.Controllers.Decorator
         private ApplicationDbContext db = new ApplicationDbContext();
         private IngredientsController ingCon = new IngredientsController();
         private Models.Ingredients ingredient = new Models.Ingredients();
-
+        
 
         private ConcreteSubject subject = new ConcreteSubject();
 
