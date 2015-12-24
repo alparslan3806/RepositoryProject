@@ -26,7 +26,7 @@ namespace Repository.Controllers.Observer
         {
             foreach(Observer o in _observers)
             {
-                o.Update();
+                o.Notify();
             }
         }
 

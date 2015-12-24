@@ -19,24 +19,13 @@ namespace Repository.Controllers.Observer
 
         public ConcreteObserver(ConcreteSubject subject, string name)
         {
-            var observerList = subject._observers; 
-            foreach(var item in observerList)
-            {
-                var quantity = db.Ingredient.Where(e => e.Name.Equals(item)).Select(i => i.Quantity).FirstOrDefault();
-                if (quantity < 10)
-                {
-                    
-                }
-            }
-            
-
 
 
             _subject = subject;
             _name = name;
         }
         
-        public override void Update()
+        public override void Notify()
         {
             _observerState = _subject.SubjectState;
         }

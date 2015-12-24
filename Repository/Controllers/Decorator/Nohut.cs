@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Repository.Controllers.Observer;
+using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -14,6 +15,7 @@ namespace Repository.Controllers.Decorator
 
         public Nohut()
         {
+
             dbOperations();
         }
 

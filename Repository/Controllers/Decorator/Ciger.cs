@@ -37,11 +37,11 @@ namespace Repository.Controllers.Decorator
         }
         public void dbOperations()
         {
-            int number = ((db.Ingredient.Where(e => e.Name.Equals("Ciger")).Select(i => i.Quantity).FirstOrDefault()) - 5);
+            int number = ((db.Ingredient.Where(e => e.Name.Equals("Ciğer")).Select(i => i.Quantity).FirstOrDefault()) - 5);
             var ingredients = new Models.Ingredients
             {
                 Id = 2,
-                Name = "Ciger",
+                Name = "Ciğer",
                 Quantity = number
             };
 

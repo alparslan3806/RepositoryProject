@@ -7,6 +7,6 @@ namespace Repository.Controllers.Observer
 {
     public abstract class Observer
     {
-        public abstract void Update();
+        public abstract void Notify();
     }
 }
