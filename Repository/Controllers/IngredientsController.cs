@@ -82,8 +82,25 @@ namespace Repository.Controllers
         {
             if (ModelState.IsValid)
             {
+                Warnings deleteWarning = new Warnings();
+
+                foreach(var item in db.Warning.Select(e => e.State).ToList())
+                {
+                    if(db.Warning.Where(e => e.State.Equals(item)) != null)
+                    {
+                        deleteWarning.Id = db.Warning.Where(e => e.State == item).Select(e => e.Id).FirstOrDefault();
+                        deleteWarning.State = db.Warning.Where(e => e.State == item).Select(e => e.State).FirstOrDefault();
+
+                        db.Warning.Attach(deleteWarning);
+                        db.Warning.Remove(deleteWarning);
+                        db.SaveChanges();
+                    }
+                    
+
+                }
                 db.Entry(ingredients).State = EntityState.Modified;
                 db.SaveChanges();
+
                 return RedirectToAction("Index");
             }
             return View(ingredients);

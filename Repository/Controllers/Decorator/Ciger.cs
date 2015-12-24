@@ -12,10 +12,8 @@ namespace Repository.Controllers.Decorator
         private ApplicationDbContext db = new ApplicationDbContext();
         private IngredientsController ingCon = new IngredientsController();
         private Models.Ingredients ingredient = new Models.Ingredients();
-        
-
         private ConcreteSubject subject = new ConcreteSubject();
-
+        
         //Nohut Ciger and EtliSacKavurma classes are playing Espresso and HouseBlend
 
         public Ciger()
@@ -28,6 +26,7 @@ namespace Repository.Controllers.Decorator
         { 
             return 5;
         }
+
         public override string getDescription
         {
             get
@@ -38,18 +37,26 @@ namespace Repository.Controllers.Decorator
         public void dbOperations()
         {
             int number = ((db.Ingredient.Where(e => e.Name.Equals("Ciğer")).Select(i => i.Quantity).FirstOrDefault()) - 5);
-            var ingredients = new Models.Ingredients
+            if (number > 180)
             {
-                Id = 2,
-                Name = "Ciğer",
-                Quantity = number
-            };
+                var ingredients = new Models.Ingredients
+                {
+                    Id = 2,
+                    Name = "Ciğer",
+                    Quantity = number
+                };
 
-            using (var db = new ApplicationDbContext())
+                using (var db = new ApplicationDbContext())
+                {
+                    db.Ingredient.Attach(ingredients);
+                    db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
+                    db.SaveChanges();
+                }
+            }
+            else
             {
-                db.Ingredient.Attach(ingredients);
-                db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
-                db.SaveChanges();
+                subject.SubjectState = "Ciğer";
+                subject.Notify();
             }
         }
     }

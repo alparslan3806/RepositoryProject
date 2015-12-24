@@ -12,14 +12,13 @@ namespace Repository.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         private ConcreteSubject concreteSubject = new ConcreteSubject();
-
+        public string messageToView = null;
 
         public ActionResult Index()
         {
-            
             //concreteSubject.Attach(new ConcreteObserver())
 
-
+            
             return View();
         }
 

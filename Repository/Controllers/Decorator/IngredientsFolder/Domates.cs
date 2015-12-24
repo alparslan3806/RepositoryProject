@@ -1,4 +1,5 @@
-﻿using Repository.Models;
+﻿using Repository.Controllers.Observer;
+using Repository.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -11,12 +12,13 @@ namespace Repository.Controllers.Decorator.Ingredients
         private ApplicationDbContext db = new ApplicationDbContext();
         private IngredientsController ingCon = new IngredientsController();
         private Models.Ingredients ingredient = new Models.Ingredients();
-
+        private ConcreteSubject subject = new ConcreteSubject();
         private Food food;
 
         public Domates(Food food)
         {
             this.food = food;
+            subject.Attach(new ConcreteObserver(subject, "Domates"));
             dbOperations();
         }
 

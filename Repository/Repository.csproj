@@ -200,12 +200,17 @@
     <Compile Include="Migrations\201512142018114_First.Designer.cs">
       <DependentUpon>201512142018114_First.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201512240214085_Second.cs" />
+    <Compile Include="Migrations\201512240214085_Second.Designer.cs">
+      <DependentUpon>201512240214085_Second.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\Ingredients.cs" />
     <Compile Include="Models\IngredientsViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Warnings.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
@@ -296,6 +301,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201512142018114_First.resx">
       <DependentUpon>201512142018114_First.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201512240214085_Second.resx">
+      <DependentUpon>201512240214085_Second.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

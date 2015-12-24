@@ -43,7 +43,10 @@ namespace Repository.Controllers
 
             }
 
-            TempData["ingredientList"] = food.getDescription;
+            if (db.Warning.FirstOrDefault() == null)
+            {
+                TempData["ingredientList"] = food.getDescription + " " + food.cost().ToString() + "Tl";
+            }
 
             return RedirectToAction("Index", "Food");
         }
@@ -75,8 +78,10 @@ namespace Repository.Controllers
                 calculateZeytinyagi(ingredients.Zeytinyagi);
 
             }
-
-            TempData["ingredientList"] = food.getDescription;
+            if(db.Warning.FirstOrDefault() == null)
+            {
+                TempData["ingredientList"] = food.getDescription + " " + food.cost().ToString() + "Tl";
+            }
 
             return RedirectToAction("Index", "Food");
         }
@@ -109,12 +114,16 @@ namespace Repository.Controllers
                 
             }
 
-            TempData["ingredientList"] = food.getDescription + " " + food.cost().ToString() + "Tl";
+            if (db.Warning.FirstOrDefault() == null)
+            {
+                TempData["ingredientList"] = food.getDescription + " " + food.cost().ToString() + "Tl";
+            }
             return RedirectToAction("Index", "Food");
         }
 
         public ActionResult Index()
         {
+            ViewBag.msg = db.Warning.Select(e => e.State).FirstOrDefault();
             return View();
         }
 

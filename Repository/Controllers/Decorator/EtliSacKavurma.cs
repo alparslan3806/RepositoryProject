@@ -12,9 +12,13 @@ namespace Repository.Controllers.Decorator
         private ApplicationDbContext db = new ApplicationDbContext();
         private IngredientsController ingCon = new IngredientsController();
         private Models.Ingredients ingredient = new Models.Ingredients();
+        private ConcreteSubject subject = new ConcreteSubject();
+
+
 
         public EtliSacKavurma()
         {
+            subject.Attach(new ConcreteObserver(subject, "Et"));
             dbOperations();
         }
 
@@ -33,18 +37,26 @@ namespace Repository.Controllers.Decorator
         public void dbOperations()
         {
             int number = ((db.Ingredient.Where(e => e.Name.Equals("Et")).Select(i => i.Quantity).FirstOrDefault()) - 5);
-            var ingredients = new Models.Ingredients
+            if (number < 100)
             {
-                Id = 4,
-                Name = "Et",
-                Quantity = number
-            };
+                var ingredients = new Models.Ingredients
+                {
+                    Id = 4,
+                    Name = "Et",
+                    Quantity = number
+                };
 
-            using (var db = new ApplicationDbContext())
+                using (var db = new ApplicationDbContext())
+                {
+                    db.Ingredient.Attach(ingredients);
+                    db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
+                    db.SaveChanges();
+                }
+            }
+            else
             {
-                db.Ingredient.Attach(ingredients);
-                db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
-                db.SaveChanges();
+                subject.SubjectState = "Et";
+                subject.Notify();
             }
         }
     }

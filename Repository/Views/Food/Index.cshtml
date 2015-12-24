@@ -13,3 +13,12 @@
 {
     <p class="label label-danger"> Cost : @TempData["cost"]</p>
 }
+<div class="jumbotron">
+    <p class="lead">We will tell you if the amount of ingredients are lower than indicated </p>
+    @if (ViewBag.msg != null)
+    {
+        var str = ViewBag.msg + "Miktarı Yetersiz";
+
+        <p>@str</p>
+    }
+</div>

@@ -21,6 +21,7 @@ namespace Repository.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public DbSet<Ingredients> Ingredient { get; set; }
+        public DbSet<Warnings> Warning { get; set; }
 
 
         public ApplicationDbContext()
