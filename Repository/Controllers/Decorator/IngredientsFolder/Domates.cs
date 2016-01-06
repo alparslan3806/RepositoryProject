@@ -37,18 +37,26 @@ namespace Repository.Controllers.Decorator.Ingredients
         public void dbOperations()
         {
             int number = ((db.Ingredient.Where(e => e.Name.Equals("Domates")).Select(i => i.Quantity).FirstOrDefault()) - 5);
-            var ingredients = new Models.Ingredients
+            if (number > 100)
             {
-                Id = 7,
-                Name = "Domates",
-                Quantity = number
-            };
+                var ingredients = new Models.Ingredients
+                {
+                    Id = 7,
+                    Name = "Domates",
+                    Quantity = number
+                };
 
-            using (var db = new ApplicationDbContext())
+                using (var db = new ApplicationDbContext())
+                {
+                    db.Ingredient.Attach(ingredients);
+                    db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
+                    db.SaveChanges();
+                }
+            }
+            else
             {
-                db.Ingredient.Attach(ingredients);
-                db.Entry(ingredients).Property(e => e.Quantity).IsModified = true;
-                db.SaveChanges();
+                subject.SubjectState = "Zeytinyağı";
+                subject.Notify();
             }
         }
     }

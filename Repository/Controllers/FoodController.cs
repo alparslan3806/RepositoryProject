@@ -123,7 +123,7 @@ namespace Repository.Controllers
 
         public ActionResult Index()
         {
-            ViewBag.msg = db.Warning.Select(e => e.State).FirstOrDefault();
+            ViewBag.msg = db.Warning.Select(e => e.State).ToList();
             return View();
         }
 
